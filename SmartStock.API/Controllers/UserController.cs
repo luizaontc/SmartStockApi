@@ -42,7 +42,7 @@ namespace SmartStock.API.Controllers
 
             if (user != null) 
             { 
-                return Ok(newUser); 
+                return Ok(); 
             }
             else
             {
