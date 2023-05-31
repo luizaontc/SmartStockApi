@@ -78,6 +78,8 @@ namespace SmartStock.Service.Services
         {
             try
             {
+                user.ModifiedDate = DateTime.Now;
+                user.UserModifiedId = 1;
                 var response = _userRepository.UpdateUser(user);
 
                 return response;

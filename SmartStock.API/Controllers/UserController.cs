@@ -58,7 +58,7 @@ namespace SmartStock.API.Controllers
 
             if (user != null)
             {
-                return Ok(newUser);
+                return Ok();
             }
             else
             {
@@ -74,7 +74,7 @@ namespace SmartStock.API.Controllers
 
             if (deleteUser != null)
             {
-                return Ok(deleteUser);
+                return Ok();
             }
             else
             {

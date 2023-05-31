@@ -38,7 +38,7 @@ namespace SmartStock.Data.Repository
         public string UpdateUser(User user)
         {
             try
-            {
+            { 
                 _db.Update(user);
                 _db.SaveChanges();
 
@@ -56,7 +56,7 @@ namespace SmartStock.Data.Repository
         {
             try
             {
-                var usersList = await _db.Users.ToListAsync();
+                var usersList = await _db.Users.Where(x=> x.Deleted == false).ToListAsync();
 
                 return (IEnumerable<User>)usersList;
             }
@@ -72,9 +72,9 @@ namespace SmartStock.Data.Repository
         {
             try
             {
-                var user = _db.Users.Where(x => x.Id == id).FirstOrDefaultAsync();
+                var user = _db.Users.Where(x => x.Id == id && x.Deleted == false).FirstOrDefault();
 
-                return await user;
+                return  user;
 
             }
             catch (Exception ex)
@@ -92,7 +92,10 @@ namespace SmartStock.Data.Repository
 
                 if (user != null)
                 {
-                    _db.Remove(user);
+                    user.DeletedDate = DateTime.Now;
+                    user.UserDeletedId = 1;
+                    user.Deleted = true;
+                    _db.Update(user);
                     _db.SaveChanges();
 
                     return "Usuário Deletado";
