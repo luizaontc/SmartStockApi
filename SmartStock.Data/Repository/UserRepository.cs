@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartStock.Data.Repository.Interface;
+using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -110,6 +112,20 @@ namespace SmartStock.Data.Repository
             {
 
                 return "Ocorreu um erro: " + ex.Message;
+            }
+        }
+
+        public User Login(UserDTO user)
+        {
+            try
+            {
+                var verificarLogin = _db.Users.Where(x=> x.Username == user.Username && x.Password == user.Password).FirstOrDefault();
+
+                return verificarLogin;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }

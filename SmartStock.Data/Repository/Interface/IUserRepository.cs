@@ -1,4 +1,5 @@
-﻿using SmartStock.Domain.Entities;
+﻿using SmartStock.Domain.DTO;
+using SmartStock.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SmartStock.Data.Repository.Interface
         string NewUser(User user);
         string UpdateUser(User user);
         string DeleteUserById(int id);
+        User Login(UserDTO user);
     }
 }
     

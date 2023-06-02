@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
 using SmartStock.Service.Services.Interface;
 
@@ -81,6 +83,22 @@ namespace SmartStock.API.Controllers
                 return NotFound();
             }
 
+        }
+
+        [HttpPost("authenticate"), AllowAnonymous]
+        public IActionResult Authenticate(UserDTO user)
+        {
+            try
+            {
+                var login = _userService.Authenticate(user);
+
+                return Ok(login);
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
+            
         }
     }
 }

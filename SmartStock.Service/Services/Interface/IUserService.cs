@@ -1,4 +1,6 @@
-﻿using SmartStock.Domain.Entities;
+﻿using SmartStock.Domain.DTO;
+using SmartStock.Domain.Entities;
+using SmartStock.Domain.Models;
 
 namespace SmartStock.Service.Services.Interface
 {
@@ -9,5 +11,6 @@ namespace SmartStock.Service.Services.Interface
         Task<string> DeleteUserById(int id);
         Task<string> NewUser (User user);
         Task<string> UpdateUser (User user);
+        UserLoginModel Authenticate (UserDTO user);
     }
 }

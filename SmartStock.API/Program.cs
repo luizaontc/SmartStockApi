@@ -5,6 +5,9 @@ using SmartStock.Domain.Entities;
 using SmartStock.Service.Services;
 using SmartStock.Service.Services.Interface;
 using SmartStock.Service.Interface;
+using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
+using SmartStock.Domain.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +20,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+//builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 builder.Services.AddCors();
 
@@ -40,4 +46,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
