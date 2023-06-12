@@ -18,14 +18,14 @@ namespace SmartStock.API.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
         {
             var users = await _userService.GetAllUsers();
             return Ok(users);
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("{userId}"), Authorize]
         public async Task<ActionResult<User>> GetUserById(int userId)
         {
             var user = await _userService.GetUserById(userId);
@@ -37,7 +37,7 @@ namespace SmartStock.API.Controllers
             return Ok(user);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<ActionResult<User>> NewUser(User user)
         {
             var newUser = await _userService.NewUser(user);
@@ -53,7 +53,7 @@ namespace SmartStock.API.Controllers
 
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
         public async Task<ActionResult> UpdateUser(User user)
         {
             var newUser = await _userService.UpdateUser(user);
@@ -69,7 +69,7 @@ namespace SmartStock.API.Controllers
 
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<ActionResult> DeleteUser(int id)
         {
             var deleteUser = await _userService.DeleteUserById(id);
@@ -98,7 +98,6 @@ namespace SmartStock.API.Controllers
             {
                 return NotFound();
             }
-            
         }
     }
 }

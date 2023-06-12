@@ -117,6 +117,7 @@ namespace SmartStock.Service.Services
                     throw new Exception("Usuário está inativo");
                 }
 
+                
                 return new UserLoginModel(_mapper.Map<UserInfoDTO>(login), _tokenService.GenerateToken(login));
             }
             catch (Exception ex)

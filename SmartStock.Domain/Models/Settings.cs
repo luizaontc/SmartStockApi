@@ -8,6 +8,6 @@ namespace SmartStock.Domain.Models
 {
     public static class Settings
     {
-        public static string Secret = "Template123Template123"; //Precisa ter mais de 16 caracteres.
+        public static string Secret = "43e4dbf0-52ed-4203-895d-42b586496bd4";
     }
 }
