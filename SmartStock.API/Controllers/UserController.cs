@@ -92,7 +92,7 @@ namespace SmartStock.API.Controllers
             {
                 var login = _userService.Authenticate(user);
 
-                return Ok(login);
+                return Json(login);
             }
             catch (Exception ex)
             {

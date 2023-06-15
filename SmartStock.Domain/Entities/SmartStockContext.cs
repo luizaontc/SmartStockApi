@@ -96,6 +96,7 @@ public partial class SmartStockContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.RecipientEmail).IsUnicode(false);
             entity.Property(e => e.RemetentAddress).IsUnicode(false);
+            entity.Property(e => e.RecipientPhoneNumber).HasColumnType("bigint");
 
             entity.HasOne(d => d.Company).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.CompanyId)

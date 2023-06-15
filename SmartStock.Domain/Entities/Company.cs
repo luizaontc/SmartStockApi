@@ -1,9 +1,10 @@
-﻿using System;
+﻿using SmartStock.Domain.Models;
+using System;
 using System.Collections.Generic;
 
 namespace SmartStock.Domain.Entities;
 
-public partial class Company
+public partial class Company : Base
 {
     public int Id { get; set; }
 
@@ -20,20 +21,6 @@ public partial class Company
     public string Cnpj { get; set; } = null!;
 
     public int? PhoneNumber { get; set; }
-
-    public bool Deleted { get; set; }
-
-    public DateTime? DeletedDate { get; set; }
-
-    public int? UserDeletedId { get; set; }
-
-    public DateTime CreationDate { get; set; }
-
-    public int UserCreationId { get; set; }
-
-    public DateTime? ModifiedDate { get; set; }
-
-    public int? UserModifiedId { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
