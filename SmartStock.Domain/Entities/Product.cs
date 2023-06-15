@@ -16,5 +16,5 @@ public partial class Product : Base
 
     public int CompanyId { get; set; }
 
-    public virtual Company Company { get; set; } = null!;
+    public virtual Company? Company { get; set; }
 }

@@ -6,21 +6,21 @@ using SmartStock.Service.Services.Interface;
 namespace SmartStock.API.Controllers
 {
     [ApiController]
-    [Route("/api/{controller}")]
-    public class OrderController : Controller
+    [Route("/api/[controller]")]
+    public class ProductController : Controller
     {
-        private readonly IOrderService _orderService;
-        public OrderController(IOrderService orderService)
+        private readonly IProductService _productService;
+        public ProductController(IProductService productService)
         {
-            _orderService = orderService;
+            _productService = productService;
         }
         [HttpGet, Authorize]
         public async Task<ActionResult<IEnumerable<Order>>> GetAllOrders()
         {
             try
             {
-                var orders = await _orderService.GetAllOrders();
-                return Ok(orders);
+                var products = await _productService.GetAllProducts();
+                return Ok(products);
             }
             catch (Exception ex)
             {
@@ -33,13 +33,13 @@ namespace SmartStock.API.Controllers
         {
             try
             {
-                var order = await _orderService.GetOrderById(orderId);
-                if (order == null)
+                var product = await _productService.GetProductById(orderId);
+                if (product == null)
                 {
-                    return NotFound("Orçamento não encontrado!");
+                    return NotFound("Produto não encontrado!");
                 }
 
-                return Ok(order);
+                return Ok(product);
             }
             catch (Exception ex)
             {
@@ -48,13 +48,13 @@ namespace SmartStock.API.Controllers
         }
 
         [HttpPost, Authorize]
-        public async Task<ActionResult<Order>> NewOrder(Order order)
+        public async Task<ActionResult<Product>> NewOrder(Product product)
         {
             try
             {
-                var newOrder = await _orderService.NewOrder(order);
+                var newProduct = await _productService.NewProduct(product);
 
-                return Ok(newOrder);
+                return Ok(newProduct);
             }
             catch (Exception ex)
             {
@@ -63,13 +63,13 @@ namespace SmartStock.API.Controllers
         }
 
         [HttpPut, Authorize]
-        public async Task<ActionResult> UpdateUser(Order order)
+        public async Task<ActionResult> UpdateUser(Product product)
         {
             try
             {
-                var updateOrder = await _orderService.UpdateOrder(order);
-   
-                return Ok(updateOrder);
+                var updateProduct = await _productService.UpdateProduct(product);
+
+                return Ok(updateProduct);
             }
             catch (Exception ex)
             {
@@ -82,13 +82,12 @@ namespace SmartStock.API.Controllers
         {
             try
             {
-                var deleteOrder = await _orderService.DeleteOrderById(id);
+                var deleteProduct = await _productService.DeleteProductById(id);
 
-                return Ok(deleteOrder);
+                return Ok(deleteProduct);
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SmartStock.Data.Repository.Interface;
 using SmartStock.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStock.Data.Repository.Interface
+namespace SmartStock.Data.Repository
 {
     public class OrderRepository : IOrderRepository
     {
@@ -32,7 +33,6 @@ namespace SmartStock.Data.Repository.Interface
             }
             catch (Exception ex)
             {
-
                 return "Ocorreu um erro: " + ex.Message;
             }
 
