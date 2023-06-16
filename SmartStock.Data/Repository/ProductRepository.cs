@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartStock.Data.Repository.Interface;
 using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
+using SmartStock.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +59,9 @@ namespace SmartStock.Data.Repository
         {
             try
             {
-                var usersList = await _db.Products.Where(x => x.Deleted == false).ToListAsync();
+                var usersList = await _db.Products
+                                        .Where(x => x.Deleted == false)
+                                        .ToListAsync();
 
                 return (IEnumerable<Product>)usersList;
             }

@@ -2,7 +2,7 @@
 using SmartStock.Domain.Entities;
 using SmartStock.Domain.Models;
 
-namespace SmartStock.Service.Services.Interface
+namespace SmartStock.Domain.Interfaces.Services
 {
     public interface IUserService
     {

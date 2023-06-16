@@ -23,9 +23,6 @@ public partial class Company : Base
     public int? PhoneNumber { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
-
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     public virtual ICollection<UsersCompany> UsersCompanies { get; set; } = new List<UsersCompany>();

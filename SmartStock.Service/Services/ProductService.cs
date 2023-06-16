@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using SmartStock.Data.Repository.Interface;
 using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
+using SmartStock.Domain.Interfaces.Repositories;
+using SmartStock.Domain.Interfaces.Services;
 using SmartStock.Domain.Models;
-using SmartStock.Service.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

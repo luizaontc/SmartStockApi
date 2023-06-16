@@ -1,6 +1,6 @@
-﻿using SmartStock.Data.Repository.Interface;
-using SmartStock.Domain.DTO;
+﻿using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
+using SmartStock.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

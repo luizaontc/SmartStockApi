@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartStock.Domain.Entities;
-using SmartStock.Service.Services.Interface;
+using SmartStock.Domain.Interfaces.Services;
 
 namespace SmartStock.API.Controllers
 {

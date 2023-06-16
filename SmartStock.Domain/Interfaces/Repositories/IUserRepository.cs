@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStock.Data.Repository.Interface
+namespace SmartStock.Domain.Interfaces.Repositories
 {
     public interface IUserRepository
     {

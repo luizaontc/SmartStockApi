@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStock.Data.Repository.Interface
+namespace SmartStock.Domain.Interfaces.Repositories
 {
     public interface IOrderRepository
     {
@@ -14,5 +14,6 @@ namespace SmartStock.Data.Repository.Interface
         string NewOrder(Order order);
         string UpdateOrder(Order order);
         string DeleteOrderById(int id);
+        Company GetCompanyById(int companyId);
     }
 }

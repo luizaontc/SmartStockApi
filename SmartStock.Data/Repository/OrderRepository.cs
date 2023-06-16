@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SmartStock.Data.Repository.Interface;
 using SmartStock.Domain.Entities;
+using SmartStock.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SmartStock.Data.Repository
@@ -58,7 +60,11 @@ namespace SmartStock.Data.Repository
         {
             try
             {
-                var ordersList = await _db.Orders.Where(x => x.Deleted == false).ToListAsync();
+                var ordersList = await _db.Orders
+                    .Where(x => x.Deleted == false)
+                    .Include(x => x.Company)
+                    .Include(x => x.OrderDetails)
+                    .ToListAsync();
 
                 return (IEnumerable<Order>)ordersList;
             }
@@ -112,6 +118,24 @@ namespace SmartStock.Data.Repository
             {
 
                 return "Ocorreu um erro: " + ex.Message;
+            }
+        }
+
+        public Company GetCompanyById(int companyId)
+        {
+            try
+            {
+                var company = _db.Companies.Where(x => x.Id == companyId).FirstOrDefault();
+
+                if (company == null)
+                {
+                    throw new Exception();
+                }
+                return company;
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
     }

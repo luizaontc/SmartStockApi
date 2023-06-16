@@ -98,10 +98,10 @@ public partial class SmartStockContext : DbContext
             entity.Property(e => e.RemetentAddress).IsUnicode(false);
             entity.Property(e => e.RecipientPhoneNumber).HasColumnType("bigint");
 
-            entity.HasOne(d => d.Company).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.CompanyId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK1Orders");
+            //entity.HasOne(d => d.Company).WithMany(p => p.Orders)
+            //    .HasForeignKey(d => d.CompanyId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK1Orders");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>

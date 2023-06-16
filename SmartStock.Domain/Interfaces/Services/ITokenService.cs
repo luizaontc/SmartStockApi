@@ -6,7 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStock.Service.Services.Interface
+namespace SmartStock.Domain.Interfaces.Services
 {
     public interface ITokenService
     {

@@ -1,6 +1,7 @@
 ﻿using SmartStock.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace SmartStock.Domain.Entities;
 
@@ -16,5 +17,6 @@ public partial class Product : Base
 
     public int CompanyId { get; set; }
 
+    [JsonIgnore]
     public virtual Company? Company { get; set; }
 }

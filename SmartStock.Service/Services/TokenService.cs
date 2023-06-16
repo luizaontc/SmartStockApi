@@ -1,5 +1,4 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using SmartStock.Data.Repository.Interface;
 using SmartStock.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using SmartStock.Domain.Models;
-using SmartStock.Service.Services.Interface;
+using SmartStock.Domain.Interfaces.Services;
 
 namespace SmartStock.Service.Services
 {

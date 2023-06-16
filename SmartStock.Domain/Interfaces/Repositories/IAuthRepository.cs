@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartStock.Service.Interface
+namespace SmartStock.Domain.Interfaces.Repositories
 {
-    public interface IAuthService
+    public interface IAuthRepository
     {
         User DoLogin(UserDTO user);
-        //Task<User> DoLoginAsync(HttpContext ctx, UserDTO user);
     }
 }

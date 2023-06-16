@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
-using SmartStock.Service.Services.Interface;
+using SmartStock.Domain.Interfaces.Services;
 
 namespace SmartStock.API.Controllers
 {

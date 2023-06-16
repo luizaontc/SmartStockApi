@@ -1,10 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using SmartStock.Data.Repository.Interface;
 using SmartStock.Data.Repository;
 using SmartStock.Domain.Entities;
 using SmartStock.Service.Services;
-using SmartStock.Service.Services.Interface;
-using SmartStock.Service.Interface;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using SmartStock.Domain.Mapper;
@@ -16,6 +13,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.OpenApi.Models;
+using SmartStock.Domain.Interfaces.Services;
+using SmartStock.Domain.Interfaces.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

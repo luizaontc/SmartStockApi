@@ -1,10 +1,12 @@
-﻿using SmartStock.Data.Repository.Interface;
-using SmartStock.Domain.Entities;
-using SmartStock.Service.Services.Interface;
+﻿using SmartStock.Domain.Entities;
+using SmartStock.Domain.Interfaces.Repositories;
+using SmartStock.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace SmartStock.Service.Services
