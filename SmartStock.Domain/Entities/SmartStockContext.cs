@@ -111,6 +111,7 @@ public partial class SmartStockContext : DbContext
             entity.Property(e => e.CreationDate).HasColumnType("datetime");
             entity.Property(e => e.DeletedDate).HasColumnType("datetime");
             entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
+            entity.Property(e => e.ProductId).HasColumnType("int");
             entity.Property(e => e.ProductName)
                 .HasMaxLength(200)
                 .IsUnicode(false);

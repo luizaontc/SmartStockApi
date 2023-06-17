@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
 using SmartStock.Domain.Interfaces.Services;
 
@@ -48,7 +49,7 @@ namespace SmartStock.API.Controllers
         }
 
         [HttpPost, Authorize]
-        public async Task<ActionResult<Order>> NewOrder(Order order)
+        public async Task<ActionResult<Order>> NewOrder(OrderDTO order)
         {
             try
             {

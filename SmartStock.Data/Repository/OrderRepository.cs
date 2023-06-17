@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace SmartStock.Data.Repository
 {
@@ -24,9 +25,10 @@ namespace SmartStock.Data.Repository
         {
             try
             {
-                order.CreationDate = DateTime.Now;
-                order.Deleted = false;
-                order.UserCreationId = 1;
+                //order.CreationDate = DateTime.Now;
+                //order.Deleted = false;
+                //order.UserCreationId = 1;
+                order.TotalPrice = order.OrderDetails.Select(x => x.Price * x.Quantity).Sum();
 
                 _db.Add(order);
                 _db.SaveChanges();

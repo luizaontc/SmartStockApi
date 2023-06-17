@@ -36,4 +36,9 @@ public partial class Order : Base
 
     public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
 
+    public override void SetCreationDate()
+    {
+        base.SetCreationDate();
+    }
+
 }

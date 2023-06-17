@@ -8,15 +8,19 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using System.Threading.Tasks;
+using SmartStock.Domain.DTO;
+using AutoMapper;
 
 namespace SmartStock.Service.Services
 {
     public class OrderService : IOrderService
     {
+        private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository,IMapper mapper)
         {
             _orderRepository = orderRepository;
+            _mapper = mapper;
         }
         public async Task<IEnumerable<Order>> GetAllOrders()
         {
@@ -66,10 +70,11 @@ namespace SmartStock.Service.Services
 
         }
 
-        public async Task<string> NewOrder(Order order)
+        public async Task<string> NewOrder(OrderDTO orderDto)
         {
             try
             {
+                var order = _mapper.Map<Order>(orderDto);
                 var response = _orderRepository.NewOrder(order);
 
                 return response;

@@ -15,6 +15,9 @@ namespace SmartStock.Domain.Mapper
         public AutoMapperProfile()
         {
             CreateMap<User, UserInfoDTO>();
+            CreateMap<OrderDTO, Order>()
+                .ForMember(dest => dest.OrderDetails, opt => opt.MapFrom(src => src.OrderDetails));
+            CreateMap<OrderDetailDTO, OrderDetail>();
         }
     }
 }
