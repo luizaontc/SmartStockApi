@@ -116,6 +116,11 @@ public partial class SmartStockContext : DbContext
                 .HasMaxLength(200)
                 .IsUnicode(false);
 
+            entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK3OrderDetails");
+
             entity.HasOne(d => d.Company).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.CompanyId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

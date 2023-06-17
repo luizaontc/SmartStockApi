@@ -19,13 +19,10 @@ public partial class OrderDetail : Base
     public double Price { get; set; }
 
     public int CompanyId { get; set; }
+    public virtual Product? Product { get; set; }
     [JsonIgnore]
     public virtual Company Company { get; set; }
     [JsonIgnore]
     public virtual Order Order { get; set; }
 
-    public override void SetCreationDate()
-    {
-        base.SetCreationDate();
-    }
 }

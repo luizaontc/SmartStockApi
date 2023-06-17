@@ -82,7 +82,9 @@ namespace SmartStock.Data.Repository
         {
             try
             {
-                var order = _db.Orders.Where(x => x.Id == id && x.Deleted == false).FirstOrDefault();
+                var order = _db.Orders.Where(x => x.Id == id && x.Deleted == false)
+                                       .Include(x=>x.OrderDetails) 
+                                        .FirstOrDefault();
 
                 return order;
 

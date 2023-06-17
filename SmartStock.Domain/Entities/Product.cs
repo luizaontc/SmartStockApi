@@ -19,4 +19,6 @@ public partial class Product : Base
 
     [JsonIgnore]
     public virtual Company? Company { get; set; }
+    [JsonIgnore]
+    public virtual ICollection<OrderDetail>? OrderDetails { get; set; }
 }
