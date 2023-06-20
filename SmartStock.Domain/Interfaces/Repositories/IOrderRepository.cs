@@ -11,6 +11,7 @@ namespace SmartStock.Domain.Interfaces.Repositories
     {
         Task<IEnumerable<Order>> GetAllAsync();
         Task<Order> GetByIdAsync(int id);
+        Task<IEnumerable<OrderDetail>> GetDetailsByIdAsync(int id);
         string NewOrder(Order order);
         string UpdateOrder(Order order);
         string DeleteOrderById(int id);

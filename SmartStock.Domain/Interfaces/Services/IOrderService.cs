@@ -12,6 +12,7 @@ namespace SmartStock.Domain.Interfaces.Services
     {
         Task<IEnumerable<Order>> GetAllOrders();
         Task<Order> GetOrderById(int id);
+        Task<IEnumerable<OrderDetail>> GetOrderDetailsById(int id);
         Task<string> DeleteOrderById(int id);
         Task<string> NewOrder(OrderDTO order);
         Task<string> UpdateOrder(Order order);

@@ -48,6 +48,25 @@ namespace SmartStock.API.Controllers
             }
         }
 
+        [HttpGet("/details/{orderId}"), Authorize]
+        public async Task<ActionResult<OrderDetail>> GetOrderDetailsById(int orderId)
+        {
+            try
+            {
+                var order = await _orderService.GetOrderDetailsById(orderId);
+                if (order == null)
+                {
+                    return NotFound($"Detalhes do orçamento {orderId} não encontrado!");
+                }
+
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost, Authorize]
         public async Task<ActionResult<Order>> NewOrder(OrderDTO order)
         {

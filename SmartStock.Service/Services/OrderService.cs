@@ -54,6 +54,22 @@ namespace SmartStock.Service.Services
 
         }
 
+        public async Task<IEnumerable<OrderDetail>> GetOrderDetailsById(int id)
+        {
+            try
+            {
+                var order = await _orderRepository.GetDetailsByIdAsync(id);
+
+                return order;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro: " + ex);
+            }
+
+        }
+
         public async Task<string> DeleteOrderById(int id)
         {
             try

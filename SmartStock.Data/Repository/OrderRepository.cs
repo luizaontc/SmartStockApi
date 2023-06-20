@@ -96,6 +96,24 @@ namespace SmartStock.Data.Repository
             }
         }
 
+        public async Task<IEnumerable<OrderDetail>> GetDetailsByIdAsync(int id)
+        {
+            try
+            {
+                var order = _db.Orders.Where(x => x.Id == id && x.Deleted == false)
+                                       .Include(x => x.OrderDetails)
+                                       .Select(x=> x.OrderDetails)
+                                        .FirstOrDefault();
+
+                return order;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
         public string DeleteOrderById(int id)
         {
             try
