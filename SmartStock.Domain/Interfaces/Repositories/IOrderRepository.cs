@@ -10,6 +10,7 @@ namespace SmartStock.Domain.Interfaces.Repositories
     public interface IOrderRepository
     {
         Task<IEnumerable<Order>> GetAllAsync();
+        Task<IEnumerable<Order>> GetOrderByDateAsync(DateTime initialDate, DateTime endDate);
         Task<Order> GetByIdAsync(int id);
         Task<IEnumerable<OrderDetail>> GetDetailsByIdAsync(int id);
         string NewOrder(Order order);

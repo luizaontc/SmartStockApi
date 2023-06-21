@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartStock.Domain.DTO;
 using SmartStock.Domain.Entities;
 using SmartStock.Domain.Interfaces.Services;
+using SmartStock.Domain.Models;
 
 namespace SmartStock.API.Controllers
 {
@@ -21,6 +22,22 @@ namespace SmartStock.API.Controllers
             try
             {
                 var orders = await _orderService.GetAllOrders();
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("date"), Authorize]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersByDate([FromBody] DateFilterModel filter)
+        {
+            try
+            {
+                var initial = DateTime.Parse(filter.InitialDate);
+                var end = DateTime.Parse(filter.EndDate);
+                var orders = await _orderService.GetOrdersByDate(initial, end);
                 return Ok(orders);
             }
             catch (Exception ex)
@@ -81,6 +98,7 @@ namespace SmartStock.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
 
         [HttpPut, Authorize]
         public async Task<ActionResult> UpdateUser(Order order)

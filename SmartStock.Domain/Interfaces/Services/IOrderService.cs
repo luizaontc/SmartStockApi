@@ -11,6 +11,7 @@ namespace SmartStock.Domain.Interfaces.Services
     public interface IOrderService
     {
         Task<IEnumerable<Order>> GetAllOrders();
+        Task<IEnumerable<Order>> GetOrdersByDate(DateTime initialDate,DateTime endDate);
         Task<Order> GetOrderById(int id);
         Task<IEnumerable<OrderDetail>> GetOrderDetailsById(int id);
         Task<string> DeleteOrderById(int id);

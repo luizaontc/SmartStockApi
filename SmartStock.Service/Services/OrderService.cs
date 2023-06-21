@@ -38,6 +38,22 @@ namespace SmartStock.Service.Services
 
         }
 
+        public async Task<IEnumerable<Order>> GetOrdersByDate(DateTime initialDate, DateTime endDate)
+        {
+            try
+            {
+                var orders = await _orderRepository.GetOrderByDateAsync(initialDate,endDate);
+
+                return orders;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Ocorreu um erro: " + ex);
+            }
+
+        }
+
         public async Task<Order> GetOrderById(int id)
         {
             try

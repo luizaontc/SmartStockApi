@@ -77,6 +77,26 @@ namespace SmartStock.Data.Repository
             }
 
         }
+        public async Task<IEnumerable<Order>> GetOrderByDateAsync(DateTime initialDate, DateTime endDate)
+        {
+            try
+            {
+                var ordersList = await _db.Orders
+                    .Where(x => x.Deleted == false && x.CreationDate >= initialDate && x.CreationDate<=endDate)
+                    .Include(x => x.Company)
+                    .Include(x => x.OrderDetails)
+                    .ToListAsync();
+
+                return (IEnumerable<Order>)ordersList;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+        }
+        
 
         public async Task<Order> GetByIdAsync(int id)
         {
